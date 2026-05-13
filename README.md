@@ -38,5 +38,4 @@ Ordem dos argumentos: reservadas, separadores, codigo 1, codigo 2.
 
 Frequencia das palavras do `c1` (ordenado), reservadas com peso 2, ignorar o
 que estiver em `sep`, e um numero de similaridade entre os dois codigos
-(regra do 10% e divisao pela soma das frequencias do `c1`). Os detalhes
-estao no PDF da disciplina.
+(regra do 10% e divisao pela soma das frequencias do `c1`).

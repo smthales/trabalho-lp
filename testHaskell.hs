@@ -12,7 +12,7 @@ cd "D:\Documentos SSD\GitHubSSD\trabalho-lp"
 runghc testHaskell.hs
 
 3) Rodar com parâmetros:
-runghc Main.hs res.txt sep.txt c1.hs c2.hs
+runghc Main.hs exemplos/res.txt exemplos/sep.txt exemplos/c1.hs exemplos/c2.hs
 
 4) Compilar:
 ghc Main.hs -o sim

@@ -1,0 +1,6 @@
+c1 x c2 -> alta/média-alta
+c3 x c4 -> média
+c5 x c6 -> média-baixa
+c1 x c5 -> baixa/média
+c2 x c6 -> baixa/média
+c3 x c6 -> baixa

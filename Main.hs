@@ -1,3 +1,4 @@
+{- HLINT ignore "Eta reduce" -}
 module Main where
 
 import qualified Data.Map.Strict as Map
@@ -18,7 +19,7 @@ tokenize seps texto =
         | otherwise     = c
 
 countFreq :: [String] -> [String] -> Map String Int
-countFreq reservadas = foldl contar Map.empty
+countFreq reservadas tokens = foldl contar Map.empty tokens
   where
     contar mapa palavra =
         Map.insertWith (+) palavra peso mapa
@@ -36,12 +37,15 @@ similarity freq1 freq2
     listaF1 = Map.toList freq1
     somaF1 = sum (Map.elems freq1)
 
-    m = sum
-        [ f1
-        | (palavra, f1) <- listaF1
-        , let f2 = Map.findWithDefault 0 palavra freq2
-        , dentroDe10PorCento f1 f2
-        ]
+    m = sum (map contribuicao listaF1)
+
+    contribuicao :: (String, Int) -> Int
+    contribuicao (palavra, f1) =
+        if dentroDe10PorCento f1 f2
+            then f1
+            else 0
+      where
+        f2 = Map.findWithDefault 0 palavra freq2
 
     dentroDe10PorCento f1 f2 =
         abs (fromIntegral f1 - fromIntegral f2) <= 0.1 * fromIntegral f1
@@ -80,6 +84,7 @@ main = do
             let reservadas = words resContent
 
             let separadores =
+        --Pode tirar filtro se nao quiser tratar espaco, quebra de linha, tabulacao, \r OU se separadores já estiverem no formato correto
                     filter (`notElem` [' ', '\n', '\t', '\r']) sepContent
 
             let tokens1 = tokenize separadores c1Content
@@ -92,11 +97,11 @@ main = do
             let sim = similarity freq1 freq2
 
             printReport relatorio sim
-
-        _ -> do
+        --Mensagem para avisar que rodou incorretamente em relação aos parametros 
+        _ -> do 
             putStrLn "Uso:"
-            putStrLn "runghc Main.hs res.txt sep.txt c1.hs c2.hs"
+            putStrLn "runghc Main.hs res.txt sep.txt cX.hs cY.hs"
             putStrLn ""
             putStrLn "Exemplo:"
-            putStrLn "runghc Main.hs exemplos/res.txt exemplos/sep.txt exemplos/c1.hs exemplos/c2.hs"
+            putStrLn "runghc Main.hs exemplos/res.txt exemplos/sep.txt exemplos/cX.hs exemplos/cY.hs"
             exitFailure

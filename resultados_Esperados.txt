@@ -1,6 +1,6 @@
-c1 x c2 -> alta/média-alta
-c3 x c4 -> média
-c5 x c6 -> média-baixa
-c1 x c5 -> baixa/média
-c2 x c6 -> baixa/média
-c3 x c6 -> baixa
+a) c1 x c2 = 54,43%  -> média
+b) c3 x c4 = 74,14%  -> alta
+c) c5 x c6 = 27,84%  -> baixa/média-baixa
+d) c1 x c5 = 32,91%  -> baixa/média-baixa
+e) c2 x c6 = 18,18%  -> baixa
+f) c3 x c6 = 17,24%  -> baixa

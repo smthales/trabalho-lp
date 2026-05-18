@@ -95,8 +95,8 @@ main = do
 
         _ -> do
             putStrLn "Uso:"
-            putStrLn "runghc Main.hs res.txt sep.txt c1.hs c2.hs"
+            putStrLn "runghc Main.hs res.txt sep.txt cX.hs cY.hs"
             putStrLn ""
             putStrLn "Exemplo:"
-            putStrLn "runghc Main.hs exemplos/res.txt exemplos/sep.txt exemplos/c1.hs exemplos/c2.hs"
+            putStrLn "runghc Main.hs exemplos/res.txt exemplos/sep.txt exemplos/cX.hs exemplos/cY.hs"
             exitFailure
